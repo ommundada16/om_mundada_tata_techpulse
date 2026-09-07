@@ -1,0 +1,14 @@
+[
+  {"id": "M001", "threat_ref": "T001", "description": "Implement CAN message authentication (e.g., MAC-based) so ECUs reject unsigned messages."},
+  {"id": "M002", "threat_ref": "T002", "description": "Require cryptographically signed firmware images; reject any OTA package that fails signature verification."},
+  {"id": "M003", "threat_ref": "T003", "description": "Enforce Bluetooth pairing with mutual authentication and disable legacy pairing modes."},
+  {"id": "M004", "threat_ref": "T004", "description": "Require security access (seed-key exchange) before allowing any diagnostic session beyond default level."},
+  {"id": "M005", "threat_ref": "T005", "description": "Use short-lived, rotating authentication tokens instead of static credentials for backend communication."},
+  {"id": "M006", "threat_ref": "T006", "description": "Add timestamps and nonces to diagnostic commands so replayed messages are automatically rejected."},
+  {"id": "M007", "threat_ref": "T007", "description": "Implement rate limiting and traffic filtering on the Gateway ECU to resist flooding."},
+  {"id": "M008", "threat_ref": "T008", "description": "Encrypt all telemetry data in transit using TLS between TCU and backend server."},
+  {"id": "M009", "threat_ref": "T009", "description": "Sandbox Bluetooth command handling and validate all inputs from paired devices before execution."},
+  {"id": "M010", "threat_ref": "T010", "description": "Enforce anti-rollback counters so firmware can never be downgraded below the last approved version."},
+  {"id": "M011", "threat_ref": "T011", "description": "Encrypt sensitive CAN payloads or segment critical ECUs onto a separate, access-controlled CAN segment."},
+  {"id": "M012", "threat_ref": "T012", "description": "Apply strict backend access controls, monitoring, and multi-factor authentication for administrative access."}
+]

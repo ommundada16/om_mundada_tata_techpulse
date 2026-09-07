@@ -1,0 +1,18 @@
+System: Connected Vehicle Telematics Platform
+
+Components:
+1. Telematics Control Unit (TCU) - collects vehicle location, speed, and diagnostic data. Communicates over the internal CAN bus and sends data to the Backend Cloud Server over a cellular connection.
+
+2. Infotainment ECU - handles media playback and phone pairing. Connects to a driver's smartphone over Bluetooth. Shares the internal CAN bus with the TCU.
+
+3. Gateway ECU - acts as a bridge between the internal CAN bus and external interfaces. Manages Over-The-Air (OTA) firmware updates received from the Backend Cloud Server.
+
+4. Diagnostic Port (UDS) - a physical port used by technicians to run diagnostic sessions using the UDS protocol (ISO 14229). Can read and clear fault codes, and reprogram ECUs during service.
+
+5. Backend Cloud Server - stores vehicle telemetry data, pushes OTA firmware updates, and authenticates the vehicle before accepting any data or issuing commands.
+
+Data Flows:
+- TCU sends location and diagnostic data to Backend Cloud Server over cellular network.
+- Backend Cloud Server pushes OTA firmware updates to Gateway ECU, which then reprograms other ECUs on the CAN bus.
+- Infotainment ECU receives contact lists and media requests from a paired smartphone over Bluetooth.
+- Technicians connect to the Diagnostic Port to run UDS diagnostic sessions directly on the CAN bus.
