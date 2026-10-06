@@ -5,3 +5,5 @@ __pycache__/
 app/vector_db/
 *.db
 submission/
+
+evaluation/results/video_build/
