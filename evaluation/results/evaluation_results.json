@@ -452,7 +452,7 @@
             },
             {
               "threat_id": "T005",
-              "reasoning": "The TCU may use credentials to authenticate with the backend server, which could be stolen to impersonate the vehicle."
+              "reasoning": "The backend server requires vehicle authentication credentials, which could be stolen to impersonate vehicles."
             }
           ]
         },
@@ -536,15 +536,15 @@
           "suggestions": [
             {
               "threat_id": "T004",
-              "reasoning": "The Diagnostic Port (UDS) allows physical access for technicians to run diagnostic sessions, so an attacker with physical access could open a UDS diagnostic session without authorization to read or modify ECU data."
+              "reasoning": "The diagnostic port allows physical access to run diagnostic sessions, so an attacker with physical access could open a UDS session without authorization to read or modify ECU data."
             },
             {
               "threat_id": "T006",
-              "reasoning": "An attacker could capture and replay a valid diagnostic command from the UDS session to trigger unauthorized ECU actions, as UDS sessions can be intercepted and replayed."
+              "reasoning": "An attacker could capture and replay valid diagnostic commands to trigger unauthorized ECU actions, as UDS sessions can be intercepted and replayed."
             },
             {
               "threat_id": "T001",
-              "reasoning": "Spoofed CAN messages could be injected to impersonate a legitimate ECU, bypassing the diagnostic port's authentication mechanisms and allowing unauthorized access to the vehicle's systems."
+              "reasoning": "Spoofed CAN messages could be injected to impersonate a legitimate ECU, bypassing authentication mechanisms for diagnostic sessions."
             }
           ]
         },
@@ -573,15 +573,15 @@
             },
             {
               "threat_id": "T011",
-              "reasoning": "The CAN bus is a physical layer where vehicles communicate, and eavesdropping could occur if the backend server has access to vehicle data via the CAN bus."
+              "reasoning": "The CAN bus is a separate physical layer from the backend server; eavesdropping on the CAN bus does not directly compromise the backend server's data."
             },
             {
               "threat_id": "T008",
-              "reasoning": "Location data sent from the TCU to the backend server could be intercepted if it's unencrypted, as the backend server processes this data."
+              "reasoning": "Location data sent from the TCU to the backend server is typically unencrypted, making interception a realistic threat."
             },
             {
               "threat_id": "T005",
-              "reasoning": "The backend server authenticates vehicles, so stealing vehicle authentication credentials could allow impersonation of vehicles to the backend server."
+              "reasoning": "The backend server authenticates vehicles, so stealing vehicle authentication credentials to impersonate vehicles is a realistic threat."
             }
           ]
         }
@@ -701,6 +701,6 @@
         }
       ]
     },
-    "llm_seconds": 114.6
+    "llm_seconds": 123.5
   }
 }

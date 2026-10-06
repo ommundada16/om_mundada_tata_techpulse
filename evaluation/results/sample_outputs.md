@@ -24,7 +24,7 @@ LLM selected: ['T011', 'T008', 'T012', 'T001', 'T005']
 - T008 - The TCU sends location data to the backend server over a cellular connection, which could be unencrypted and intercepted. _(Source: threats.json T008)_
 - T012 - The backend server is a critical asset that, if compromised, could allow attackers to manipulate OTA updates across vehicles. _(Source: threats.json T012)_
 - T001 - The CAN bus allows for message injection, which could be used to spoof messages and impersonate legitimate ECUs. _(Source: threats.json T001)_
-- T005 - The TCU may use credentials to authenticate with the backend server, which could be stolen to impersonate the vehicle. _(Source: threats.json T005)_
+- T005 - The backend server requires vehicle authentication credentials, which could be stolen to impersonate vehicles. _(Source: threats.json T005)_
 
 ### Asset: Infotainment ECU
 Gold: ['T001', 'T003', 'T009', 'T011']  

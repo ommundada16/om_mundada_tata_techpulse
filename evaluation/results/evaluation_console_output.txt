@@ -1,0 +1,8 @@
+Risk matrix: {'cases': 9, 'correct': 9, 'accuracy': 1.0}
+Threat retrieval (12 questions): {'hit@1': 0.917, 'hit@3': 1.0, 'hit@5': 1.0, 'MRR': 0.958}
+Asset->threat recall@5: 0.938
+Mitigation retrieval: {'hit@1': 0.917, 'hit@3': 1.0, 'MRR': 0.958}
+Asset extraction: recall 1.0 count 5
+Threat selection: {'precision': 0.667, 'recall': 0.875, 'f1': 0.757, 'citation_validity': 1.0}
+Mitigation suggestion: {'valid_citation_rate': 1.0, 'correct_mitigation_rate': 1.0}
+LLM time (s): 123.5
