@@ -1,0 +1,706 @@
+{
+  "risk_matrix": {
+    "cases": 9,
+    "correct": 9,
+    "accuracy": 1.0
+  },
+  "threat_retrieval": {
+    "questions": 12,
+    "hit@1": 0.9166666666666666,
+    "hit@3": 1.0,
+    "hit@5": 1.0,
+    "MRR": 0.9583333333333334,
+    "rows": [
+      {
+        "question": "Someone sends forged messages on the vehicle CAN bus pretending to be a real ECU",
+        "expected": "T001",
+        "retrieved": [
+          "T001",
+          "T011",
+          "T006",
+          "T004",
+          "T007"
+        ],
+        "rank": 1
+      },
+      {
+        "question": "Malicious software update delivered over the air to the vehicle",
+        "expected": "T002",
+        "retrieved": [
+          "T012",
+          "T002",
+          "T009",
+          "T010",
+          "T011"
+        ],
+        "rank": 2
+      },
+      {
+        "question": "Phone pairing weakness lets an attacker into the infotainment unit",
+        "expected": "T003",
+        "retrieved": [
+          "T003",
+          "T009",
+          "T008",
+          "T002",
+          "T011"
+        ],
+        "rank": 1
+      },
+      {
+        "question": "Technician-style session opened on the OBD port without permission",
+        "expected": "T004",
+        "retrieved": [
+          "T004",
+          "T011",
+          "T006",
+          "T003",
+          "T008"
+        ],
+        "rank": 1
+      },
+      {
+        "question": "Stolen vehicle login credentials used to impersonate the car to the cloud",
+        "expected": "T005",
+        "retrieved": [
+          "T005",
+          "T011",
+          "T012",
+          "T008",
+          "T001"
+        ],
+        "rank": 1
+      },
+      {
+        "question": "Previously recorded diagnostic request is sent again to trigger an action",
+        "expected": "T006",
+        "retrieved": [
+          "T006",
+          "T004",
+          "T001",
+          "T002",
+          "T012"
+        ],
+        "rank": 1
+      },
+      {
+        "question": "Flooding the gateway so it stops responding",
+        "expected": "T007",
+        "retrieved": [
+          "T007",
+          "T010",
+          "T012",
+          "T008",
+          "T002"
+        ],
+        "rank": 1
+      },
+      {
+        "question": "Intercepting the car's GPS position while it travels to the server",
+        "expected": "T008",
+        "retrieved": [
+          "T008",
+          "T005",
+          "T011",
+          "T012",
+          "T009"
+        ],
+        "rank": 1
+      },
+      {
+        "question": "A rogue smartphone app abuses the Bluetooth connection to send commands",
+        "expected": "T009",
+        "retrieved": [
+          "T009",
+          "T003",
+          "T002",
+          "T008",
+          "T005"
+        ],
+        "rank": 1
+      },
+      {
+        "question": "Installing an older vulnerable firmware version on the ECU",
+        "expected": "T010",
+        "retrieved": [
+          "T010",
+          "T002",
+          "T003",
+          "T006",
+          "T007"
+        ],
+        "rank": 1
+      },
+      {
+        "question": "Passively listening to unencrypted traffic on the internal bus",
+        "expected": "T011",
+        "retrieved": [
+          "T011",
+          "T008",
+          "T001",
+          "T007",
+          "T004"
+        ],
+        "rank": 1
+      },
+      {
+        "question": "Attacker takes over the cloud backend that stores vehicle data",
+        "expected": "T012",
+        "retrieved": [
+          "T012",
+          "T005",
+          "T011",
+          "T008",
+          "T007"
+        ],
+        "rank": 1
+      }
+    ]
+  },
+  "asset_threat_retrieval": {
+    "recall@5": 0.9375,
+    "rows": [
+      {
+        "asset": "Telematics Control Unit (TCU)",
+        "gold": [
+          "T001",
+          "T008",
+          "T011"
+        ],
+        "retrieved": [
+          "T011",
+          "T008",
+          "T012",
+          "T001",
+          "T005"
+        ],
+        "recall": 1.0
+      },
+      {
+        "asset": "Infotainment ECU",
+        "gold": [
+          "T001",
+          "T003",
+          "T009",
+          "T011"
+        ],
+        "retrieved": [
+          "T011",
+          "T008",
+          "T001",
+          "T003",
+          "T009"
+        ],
+        "recall": 1.0
+      },
+      {
+        "asset": "Gateway ECU",
+        "gold": [
+          "T001",
+          "T002",
+          "T007",
+          "T010"
+        ],
+        "retrieved": [
+          "T012",
+          "T002",
+          "T007",
+          "T011",
+          "T001"
+        ],
+        "recall": 0.75
+      },
+      {
+        "asset": "Diagnostic Port (UDS)",
+        "gold": [
+          "T004",
+          "T006"
+        ],
+        "retrieved": [
+          "T004",
+          "T006",
+          "T001",
+          "T010",
+          "T007"
+        ],
+        "recall": 1.0
+      },
+      {
+        "asset": "Backend Cloud Server",
+        "gold": [
+          "T005",
+          "T008",
+          "T012"
+        ],
+        "retrieved": [
+          "T012",
+          "T002",
+          "T011",
+          "T008",
+          "T005"
+        ],
+        "recall": 1.0
+      }
+    ]
+  },
+  "mitigation_retrieval": {
+    "threats": 12,
+    "hit@1": 0.9166666666666666,
+    "hit@3": 1.0,
+    "MRR": 0.9583333333333334,
+    "rows": [
+      {
+        "threat": "T001",
+        "expected": "M001",
+        "retrieved": [
+          "M001",
+          "M011",
+          "M002"
+        ],
+        "rank": 1
+      },
+      {
+        "threat": "T002",
+        "expected": "M002",
+        "retrieved": [
+          "M002",
+          "M010",
+          "M001"
+        ],
+        "rank": 1
+      },
+      {
+        "threat": "T003",
+        "expected": "M003",
+        "retrieved": [
+          "M003",
+          "M009",
+          "M001"
+        ],
+        "rank": 1
+      },
+      {
+        "threat": "T004",
+        "expected": "M004",
+        "retrieved": [
+          "M004",
+          "M001",
+          "M011"
+        ],
+        "rank": 1
+      },
+      {
+        "threat": "T005",
+        "expected": "M005",
+        "retrieved": [
+          "M005",
+          "M012",
+          "M003"
+        ],
+        "rank": 1
+      },
+      {
+        "threat": "T006",
+        "expected": "M006",
+        "retrieved": [
+          "M006",
+          "M001",
+          "M011"
+        ],
+        "rank": 1
+      },
+      {
+        "threat": "T007",
+        "expected": "M007",
+        "retrieved": [
+          "M007",
+          "M001",
+          "M002"
+        ],
+        "rank": 1
+      },
+      {
+        "threat": "T008",
+        "expected": "M008",
+        "retrieved": [
+          "M008",
+          "M005",
+          "M012"
+        ],
+        "rank": 1
+      },
+      {
+        "threat": "T009",
+        "expected": "M009",
+        "retrieved": [
+          "M003",
+          "M009",
+          "M001"
+        ],
+        "rank": 2
+      },
+      {
+        "threat": "T010",
+        "expected": "M010",
+        "retrieved": [
+          "M010",
+          "M007",
+          "M002"
+        ],
+        "rank": 1
+      },
+      {
+        "threat": "T011",
+        "expected": "M011",
+        "retrieved": [
+          "M011",
+          "M001",
+          "M002"
+        ],
+        "rank": 1
+      },
+      {
+        "threat": "T012",
+        "expected": "M012",
+        "retrieved": [
+          "M012",
+          "M002",
+          "M010"
+        ],
+        "rank": 1
+      }
+    ]
+  },
+  "model": "qwen3:4b",
+  "llm": {
+    "asset_extraction": {
+      "extracted_count": 5,
+      "gold_components_found": {
+        "Telematics Control Unit (TCU)": true,
+        "Infotainment ECU": true,
+        "Gateway ECU": true,
+        "Diagnostic Port (UDS)": true,
+        "Backend Cloud Server": true
+      },
+      "recall": 1.0,
+      "raw": [
+        {
+          "name": "Telematics Control Unit (TCU)",
+          "description": "Collects vehicle location, speed, and diagnostic data. Communicates over internal CAN bus and sends data to Backend Cloud Server over cellular connection.",
+          "interface_type": "CAN"
+        },
+        {
+          "name": "Infotainment ECU",
+          "description": "Handles media playback and phone pairing. Connects to driver's smartphone over Bluetooth. Shares internal CAN bus with TCU.",
+          "interface_type": "Bluetooth"
+        },
+        {
+          "name": "Gateway ECU",
+          "description": "Acts as a bridge between internal CAN bus and external interfaces. Manages Over-The-Air (OTA) firmware updates received from Backend Cloud Server.",
+          "interface_type": "OTA"
+        },
+        {
+          "name": "Diagnostic Port (UDS)",
+          "description": "Physical port used by technicians to run diagnostic sessions using UDS protocol (ISO 14229). Can read and clear fault codes, and reprogram ECUs during service.",
+          "interface_type": "Diagnostic Port"
+        },
+        {
+          "name": "Backend Cloud Server",
+          "description": "Stores vehicle telemetry data, pushes OTA firmware updates, and authenticates vehicles before accepting data or issuing commands.",
+          "interface_type": "Backend API"
+        }
+      ]
+    },
+    "threat_selection": {
+      "precision": 0.6666666666666666,
+      "recall": 0.875,
+      "f1": 0.7567567567567567,
+      "ids_outside_retrieved_set": 0,
+      "total_selected": 21,
+      "citation_validity": 1.0,
+      "rows": [
+        {
+          "asset": "Telematics Control Unit (TCU)",
+          "gold": [
+            "T001",
+            "T008",
+            "T011"
+          ],
+          "selected": [
+            "T011",
+            "T008",
+            "T012",
+            "T001",
+            "T005"
+          ],
+          "suggestions": [
+            {
+              "threat_id": "T011",
+              "reasoning": "The TCU communicates over the internal CAN bus, which is a common attack vector for eavesdropping on vehicle data."
+            },
+            {
+              "threat_id": "T008",
+              "reasoning": "The TCU sends location data to the backend server over a cellular connection, which could be unencrypted and intercepted."
+            },
+            {
+              "threat_id": "T012",
+              "reasoning": "The backend server is a critical asset that, if compromised, could allow attackers to manipulate OTA updates across vehicles."
+            },
+            {
+              "threat_id": "T001",
+              "reasoning": "The CAN bus allows for message injection, which could be used to spoof messages and impersonate legitimate ECUs."
+            },
+            {
+              "threat_id": "T005",
+              "reasoning": "The TCU may use credentials to authenticate with the backend server, which could be stolen to impersonate the vehicle."
+            }
+          ]
+        },
+        {
+          "asset": "Infotainment ECU",
+          "gold": [
+            "T001",
+            "T003",
+            "T009",
+            "T011"
+          ],
+          "selected": [
+            "T001",
+            "T003",
+            "T009"
+          ],
+          "suggestions": [
+            {
+              "threat_id": "T001",
+              "reasoning": "The Infotainment ECU shares the internal CAN bus with the TCU, making it vulnerable to spoofed CAN message injection attacks where an attacker could impersonate a legitimate ECU."
+            },
+            {
+              "threat_id": "T003",
+              "reasoning": "The Infotainment ECU connects to a driver's smartphone via Bluetooth, and Bluetooth pairing flaws could allow an attacker to gain unauthorized access to the ECU."
+            },
+            {
+              "threat_id": "T009",
+              "reasoning": "A compromised paired smartphone app could send malicious commands to the Infotainment ECU over the Bluetooth link, exploiting the pairing mechanism."
+            }
+          ]
+        },
+        {
+          "asset": "Gateway ECU",
+          "gold": [
+            "T001",
+            "T002",
+            "T007",
+            "T010"
+          ],
+          "selected": [
+            "T012",
+            "T002",
+            "T007",
+            "T011",
+            "T001"
+          ],
+          "suggestions": [
+            {
+              "threat_id": "T012",
+              "reasoning": "The Gateway ECU manages OTA updates from the Backend Cloud Server, so if the backend server is compromised, an attacker could manipulate OTA updates across vehicles via the Gateway ECU."
+            },
+            {
+              "threat_id": "T002",
+              "reasoning": "The Gateway ECU handles OTA firmware updates, making it vulnerable to unauthorized injection of malicious firmware disguised as legitimate updates."
+            },
+            {
+              "threat_id": "T007",
+              "reasoning": "The Gateway ECU processes traffic between the CAN bus and external interfaces, so a DoS attack could flood it with traffic to block legitimate OTA updates and CAN communication."
+            },
+            {
+              "threat_id": "T011",
+              "reasoning": "The Gateway ECU interfaces with the CAN bus, allowing an attacker to eavesdrop on sensitive vehicle data transmitted over the CAN bus."
+            },
+            {
+              "threat_id": "T001",
+              "reasoning": "The Gateway ECU acts as a bridge for CAN bus traffic, enabling spoofed CAN messages to be injected and impersonate legitimate ECUs."
+            }
+          ]
+        },
+        {
+          "asset": "Diagnostic Port (UDS)",
+          "gold": [
+            "T004",
+            "T006"
+          ],
+          "selected": [
+            "T004",
+            "T006",
+            "T001"
+          ],
+          "suggestions": [
+            {
+              "threat_id": "T004",
+              "reasoning": "The Diagnostic Port (UDS) allows physical access for technicians to run diagnostic sessions, so an attacker with physical access could open a UDS diagnostic session without authorization to read or modify ECU data."
+            },
+            {
+              "threat_id": "T006",
+              "reasoning": "An attacker could capture and replay a valid diagnostic command from the UDS session to trigger unauthorized ECU actions, as UDS sessions can be intercepted and replayed."
+            },
+            {
+              "threat_id": "T001",
+              "reasoning": "Spoofed CAN messages could be injected to impersonate a legitimate ECU, bypassing the diagnostic port's authentication mechanisms and allowing unauthorized access to the vehicle's systems."
+            }
+          ]
+        },
+        {
+          "asset": "Backend Cloud Server",
+          "gold": [
+            "T005",
+            "T008",
+            "T012"
+          ],
+          "selected": [
+            "T012",
+            "T002",
+            "T011",
+            "T008",
+            "T005"
+          ],
+          "suggestions": [
+            {
+              "threat_id": "T012",
+              "reasoning": "The backend server stores vehicle telemetry data and pushes OTA firmware updates, so compromising it would allow mass OTA update manipulation across vehicles."
+            },
+            {
+              "threat_id": "T002",
+              "reasoning": "The backend server handles OTA firmware updates, so injecting malicious firmware disguised as legitimate updates is a realistic threat."
+            },
+            {
+              "threat_id": "T011",
+              "reasoning": "The CAN bus is a physical layer where vehicles communicate, and eavesdropping could occur if the backend server has access to vehicle data via the CAN bus."
+            },
+            {
+              "threat_id": "T008",
+              "reasoning": "Location data sent from the TCU to the backend server could be intercepted if it's unencrypted, as the backend server processes this data."
+            },
+            {
+              "threat_id": "T005",
+              "reasoning": "The backend server authenticates vehicles, so stealing vehicle authentication credentials could allow impersonation of vehicles to the backend server."
+            }
+          ]
+        }
+      ]
+    },
+    "mitigation_suggestion": {
+      "valid_citation_rate": 1.0,
+      "correct_mitigation_rate": 1.0,
+      "rows": [
+        {
+          "threat": "T001",
+          "expected": "M001",
+          "cited": "M001",
+          "result": {
+            "mitigation_id": "M001",
+            "description": "Implement CAN message authentication (e.g., MAC-based) to ensure ECUs reject unsigned messages, directly mitigating spoofed CAN message injection by verifying message integrity and authenticity."
+          }
+        },
+        {
+          "threat": "T002",
+          "expected": "M002",
+          "cited": "M002",
+          "result": {
+            "mitigation_id": "M002",
+            "description": "Require cryptographically signed firmware images to ensure only legitimate updates are accepted, rejecting any OTA package that fails signature verification."
+          }
+        },
+        {
+          "threat": "T003",
+          "expected": "M003",
+          "cited": "M003",
+          "result": {
+            "mitigation_id": "M003",
+            "description": "Enforce Bluetooth pairing with mutual authentication and disable legacy pairing modes to prevent unauthorized access during the pairing process."
+          }
+        },
+        {
+          "threat": "T004",
+          "expected": "M004",
+          "cited": "M004",
+          "result": {
+            "mitigation_id": "M004",
+            "description": "Require security access (seed-key exchange) before allowing any diagnostic session beyond default level to prevent unauthorized diagnostic sessions."
+          }
+        },
+        {
+          "threat": "T005",
+          "expected": "M005",
+          "cited": "M005",
+          "result": {
+            "mitigation_id": "M005",
+            "description": "Use short-lived, rotating authentication tokens instead of static credentials for backend communication to prevent attackers from stealing vehicle authentication credentials and impersonating the vehicle to the backend server."
+          }
+        },
+        {
+          "threat": "T006",
+          "expected": "M006",
+          "cited": "M006",
+          "result": {
+            "mitigation_id": "M006",
+            "description": "Add timestamps and nonces to diagnostic commands to ensure replayed messages are automatically rejected, directly addressing the T006 Replay Attack on Diagnostic Commands."
+          }
+        },
+        {
+          "threat": "T007",
+          "expected": "M007",
+          "cited": "M007",
+          "result": {
+            "mitigation_id": "M007",
+            "description": "Implement rate limiting and traffic filtering on the Gateway ECU to resist flooding attacks, directly addressing the threat of T007 Denial of Service by preventing excessive traffic from overwhelming the system."
+          }
+        },
+        {
+          "threat": "T008",
+          "expected": "M008",
+          "cited": "M008",
+          "result": {
+            "mitigation_id": "M008",
+            "description": "Encrypt all telemetry data in transit using TLS between TCU and backend server to prevent interception of unencrypted location data."
+          }
+        },
+        {
+          "threat": "T009",
+          "expected": "M009",
+          "cited": "M009",
+          "result": {
+            "mitigation_id": "M009",
+            "description": "Sandbox Bluetooth command handling and validate all inputs from paired devices before execution to prevent malicious commands from compromised apps from being executed on the Infotainment ECU over Bluetooth."
+          }
+        },
+        {
+          "threat": "T010",
+          "expected": "M010",
+          "cited": "M010",
+          "result": {
+            "mitigation_id": "M010",
+            "description": "Enforce anti-rollback counters to prevent the Gateway ECU from rolling back to older, vulnerable firmware versions by ensuring firmware can never be downgraded below the last approved version."
+          }
+        },
+        {
+          "threat": "T011",
+          "expected": "M011",
+          "cited": "M011",
+          "result": {
+            "mitigation_id": "M011",
+            "description": "Encrypt sensitive CAN payloads or segment critical ECUs onto a separate, access-controlled CAN segment to prevent passive eavesdropping on the vehicle's CAN bus."
+          }
+        },
+        {
+          "threat": "T012",
+          "expected": "M012",
+          "cited": "M012",
+          "result": {
+            "mitigation_id": "M012",
+            "description": "Apply strict backend access controls, monitoring, and multi-factor authentication for administrative access to prevent unauthorized control of the backend server, thereby mitigating the risk of mass OTA update manipulation across vehicles."
+          }
+        }
+      ]
+    },
+    "llm_seconds": 114.6
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "assets": {
+    "Telematics Control Unit (TCU)": ["T001", "T008", "T011"],
+    "Infotainment ECU": ["T001", "T003", "T009", "T011"],
+    "Gateway ECU": ["T001", "T002", "T007", "T010"],
+    "Diagnostic Port (UDS)": ["T004", "T006"],
+    "Backend Cloud Server": ["T005", "T008", "T012"]
+  },
+  "threat_retrieval_questions": [
+    {"q": "Someone sends forged messages on the vehicle CAN bus pretending to be a real ECU", "expected": "T001"},
+    {"q": "Malicious software update delivered over the air to the vehicle", "expected": "T002"},
+    {"q": "Phone pairing weakness lets an attacker into the infotainment unit", "expected": "T003"},
+    {"q": "Technician-style session opened on the OBD port without permission", "expected": "T004"},
+    {"q": "Stolen vehicle login credentials used to impersonate the car to the cloud", "expected": "T005"},
+    {"q": "Previously recorded diagnostic request is sent again to trigger an action", "expected": "T006"},
+    {"q": "Flooding the gateway so it stops responding", "expected": "T007"},
+    {"q": "Intercepting the car's GPS position while it travels to the server", "expected": "T008"},
+    {"q": "A rogue smartphone app abuses the Bluetooth connection to send commands", "expected": "T009"},
+    {"q": "Installing an older vulnerable firmware version on the ECU", "expected": "T010"},
+    {"q": "Passively listening to unencrypted traffic on the internal bus", "expected": "T011"},
+    {"q": "Attacker takes over the cloud backend that stores vehicle data", "expected": "T012"}
+  ],
+  "risk_matrix_expected": {
+    "LOW,LOW": "LOW", "LOW,MEDIUM": "LOW", "LOW,HIGH": "MEDIUM",
+    "MEDIUM,LOW": "LOW", "MEDIUM,MEDIUM": "MEDIUM", "MEDIUM,HIGH": "HIGH",
+    "HIGH,LOW": "MEDIUM", "HIGH,MEDIUM": "HIGH", "HIGH,HIGH": "CRITICAL"
+  }
+}
