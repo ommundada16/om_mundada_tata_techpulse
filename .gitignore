@@ -5,5 +5,11 @@ __pycache__/
 app/vector_db/
 *.db
 submission/
-
 evaluation/results/video_build/
+
+# personal / packaging files, not part of the project deliverable
+.vscode/
+docs/
+scripts/build_submission.py
+scripts/report_from_template.py
+scripts/make_demo_video.py

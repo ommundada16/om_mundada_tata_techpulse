@@ -84,6 +84,8 @@ app/
 └── routers/
     ├── assets.py, threats.py, risk.py, mitigations.py, report.py
 streamlit_app.py             - the frontend
+evaluation/                  - ground truth, evaluation script, end-to-end demo, saved results
+scripts/capture_screenshots.py - drives the UI to capture evidence screenshots
 ```
 
 ## Evaluation
@@ -93,5 +95,6 @@ python -m evaluation.run_evaluation --llm    # full run, needs Ollama (~2 min); 
 python -m evaluation.e2e_demo                # runs the whole workflow through the API (backend must be running)
 ```
 
-Ground truth: `evaluation/ground_truth.json`. Results: `evaluation/results/`.
-`python -m scripts.build_submission` rebuilds the submission folder, report PDF, synopsis and ZIP (edit the name/PRN block at the top of the script first).
+Ground truth: `evaluation/ground_truth.json`. Results (metrics, sample outputs with citations, end-to-end log,
+UI screenshots): `evaluation/results/`. `python -m scripts.capture_screenshots` re-captures the UI screenshots
+(backend, Streamlit and Ollama must be running, with an empty `tara.db`).
