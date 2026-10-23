@@ -1,3 +1,10 @@
+---
+title: TARA Assistant
+emoji: 🚗
+sdk: docker
+app_port: 7860
+---
+
 # Automotive Cybersecurity TARA Assistant
 
 Case Study 3 from the Tata TechPulse "Automotive Engineering AI" reference document. Assists a
@@ -98,3 +105,9 @@ python -m evaluation.e2e_demo                # runs the whole workflow through t
 Ground truth: `evaluation/ground_truth.json`. Results (metrics, sample outputs with citations, end-to-end log,
 UI screenshots): `evaluation/results/`. `python -m scripts.capture_screenshots` re-captures the UI screenshots
 (backend, Streamlit and Ollama must be running, with an empty `tara.db`).
+
+## Deployment (Hugging Face Spaces)
+
+The `Dockerfile` runs FastAPI (port 8000) and Streamlit (port 7860) in one container. When the secret
+`GROQ_API_KEY` is set, the LLM calls go to Groq (`llama-3.3-70b-versatile`) instead of a local Ollama
+model; without it the app uses Ollama as described above.

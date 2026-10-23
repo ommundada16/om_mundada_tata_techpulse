@@ -1,0 +1,6 @@
+venv/
+.git/
+submission/
+evaluation/results/
+__pycache__/
+*.db
