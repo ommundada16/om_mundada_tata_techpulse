@@ -1,7 +1,9 @@
+import os
+
 import streamlit as st
 import requests
 
-API_URL = "http://localhost:8000"
+API_URL = os.getenv("TARA_API_URL", "http://localhost:8000")
 
 st.set_page_config(page_title="TARA Assistant", layout="wide")
 st.title("Automotive Cybersecurity TARA Assistant")
