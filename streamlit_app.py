@@ -35,7 +35,7 @@ def ensure_backend():
 st.set_page_config(page_title="TARA Assistant", layout="wide")
 ensure_backend()
 st.title("Automotive Cybersecurity TARA Assistant")
-st.caption("Case Study 3 - Threat Analysis and Risk Assessment, powered by RAG + a local LLM")
+st.caption("Case Study 3 - Threat Analysis and Risk Assessment, powered by RAG + an LLM (Ollama locally, Groq when deployed)")
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(
     ["1. Assets", "2. Threats", "3. Risk Assessment", "4. Mitigations", "5. Traceability Report"]
