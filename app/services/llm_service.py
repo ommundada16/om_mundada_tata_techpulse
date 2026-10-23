@@ -27,7 +27,8 @@ def _call_groq(prompt: str, schema: dict | None) -> str:
     response = requests.post(
         GROQ_URL, json=payload, headers={"Authorization": f"Bearer {GROQ_API_KEY}"}, timeout=120
     )
-    response.raise_for_status()
+    if not response.ok:
+        raise RuntimeError(f"Groq API error {response.status_code}: {response.text[:300]}")
     return response.json()["choices"][0]["message"]["content"]
 
 

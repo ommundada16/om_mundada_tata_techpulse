@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from app.models.database import Base, engine
 from app.models import models  # noqa: F401 - needed so tables get registered
 from app.services.knowledge_base import load_knowledge_base
@@ -11,6 +12,12 @@ app = FastAPI(title="Automotive Cybersecurity TARA Assistant")
 def startup_event():
     Base.metadata.create_all(bind=engine)
     load_knowledge_base()
+
+
+@app.exception_handler(Exception)
+async def show_error(request: Request, exc: Exception):
+    # surface the real reason (e.g. LLM unreachable / bad API key) instead of a bare "Internal Server Error"
+    return JSONResponse(status_code=500, content={"detail": f"{type(exc).__name__}: {exc}"})
 
 
 app.include_router(assets.router)
