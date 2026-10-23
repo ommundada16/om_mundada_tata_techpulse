@@ -1,5 +1,7 @@
 # Automotive Cybersecurity TARA Assistant
 
+**Live demo:** https://ommundada-tara-assistant.streamlit.app
+
 Case Study 3 from the Tata TechPulse "Automotive Engineering AI" reference document. Assists a
 cybersecurity engineer with asset identification, threat scenario generation, risk assessment, and
 mitigation recommendation for a connected-vehicle system, using synthetic (fake) data.
