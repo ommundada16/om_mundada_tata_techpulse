@@ -13,11 +13,32 @@ GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = os.getenv("TARA_GROQ_MODEL", "llama-3.3-70b-versatile")
 
 
+_PREFERRED = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b", "openai/gpt-oss-20b", "llama-3.1-8b-instant"]
+_resolved_model = None
+
+
+def _groq_model() -> str:
+    """Use TARA_GROQ_MODEL if given, otherwise the first preferred model that this API key can actually access."""
+    global _resolved_model
+    if os.getenv("TARA_GROQ_MODEL"):
+        return GROQ_MODEL
+    if _resolved_model is None:
+        _resolved_model = GROQ_MODEL
+        try:
+            r = requests.get("https://api.groq.com/openai/v1/models",
+                             headers={"Authorization": f"Bearer {GROQ_API_KEY}"}, timeout=30)
+            available = {m["id"] for m in r.json().get("data", [])}
+            _resolved_model = next((m for m in _PREFERRED if m in available), GROQ_MODEL)
+        except Exception:
+            pass
+    return _resolved_model
+
+
 def _call_groq(prompt: str, schema: dict | None) -> str:
     if schema:
         prompt += "\n\nReply with ONLY valid JSON matching this JSON schema:\n" + json.dumps(schema)
     payload = {
-        "model": GROQ_MODEL,
+        "model": _groq_model(),
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0,
         "seed": 42,
