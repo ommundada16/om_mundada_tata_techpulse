@@ -5,6 +5,35 @@ import requests
 
 API_URL = os.getenv("TARA_API_URL", "http://localhost:8000")
 
+
+@st.cache_resource(show_spinner="Starting TARA backend (first load takes ~1 minute)...")
+def ensure_backend():
+    """Hosted mode (Streamlit Community Cloud runs a single process): start the FastAPI backend in a background
+    thread. Locally the backend is started separately with uvicorn, so this just detects it and returns."""
+    import threading
+    import time
+
+    def alive():
+        try:
+            return requests.get(f"{API_URL}/", timeout=2).ok
+        except requests.exceptions.RequestException:
+            return False
+
+    if not alive():
+        import uvicorn
+        from app.main import app as fastapi_app
+
+        config = uvicorn.Config(fastapi_app, host="127.0.0.1", port=8000, log_level="warning")
+        threading.Thread(target=uvicorn.Server(config).run, daemon=True).start()
+        for _ in range(180):
+            if alive():
+                break
+            time.sleep(1)
+    return True
+
+
+ensure_backend()
+
 st.set_page_config(page_title="TARA Assistant", layout="wide")
 st.title("Automotive Cybersecurity TARA Assistant")
 st.caption("Case Study 3 - Threat Analysis and Risk Assessment, powered by RAG + a local LLM")
