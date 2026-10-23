@@ -15,10 +15,7 @@ GROQ_MODEL = os.getenv("TARA_GROQ_MODEL", "llama-3.3-70b-versatile")
 
 def _call_groq(prompt: str, schema: dict | None) -> str:
     if schema:
-        prompt += "
-
-Reply with ONLY valid JSON matching this JSON schema:
-" + json.dumps(schema)
+        prompt += "\n\nReply with ONLY valid JSON matching this JSON schema:\n" + json.dumps(schema)
     payload = {
         "model": GROQ_MODEL,
         "messages": [{"role": "user", "content": prompt}],
